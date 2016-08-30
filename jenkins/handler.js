@@ -13,7 +13,9 @@ module.exports.handler = (event, context, cb) => {
   };
 
   if(event.method === "POST"){
-    let obj = prepareJsonFromString(event.payload);
+    let data = prepareJsonFromString(event.payload);
+    
+    console.log(data);
 
     return cb(null, "SUCCESS");
   }else{
