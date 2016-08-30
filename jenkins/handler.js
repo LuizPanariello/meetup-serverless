@@ -1,7 +1,22 @@
 'use strict';
 
-module.exports.handler = function(event, context, cb) {
-  return cb(null, {
-    message: 'Go Serverless! Your Lambda function executed successfully!'
-  });
+const qs = require("qs");
+
+module.exports.handler = (event, context, cb) => {
+
+  const prepareJsonFromString = (text) => {
+    if(typeof text === "string"){
+      return qs.parse(text);
+    }else{
+      return text;
+    }
+  };
+
+  if(event.method === "POST"){
+    let obj = prepareJsonFromString(event.payload);
+
+    return cb(null, "SUCCESS");
+  }else{
+    return cb(new Error("Not found"));    
+  }
 };
