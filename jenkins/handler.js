@@ -1,6 +1,7 @@
 'use strict';
 
 const qs = require("qs");
+const commands = require("./js/commands");
 
 module.exports.handler = (event, context, cb) => {
 

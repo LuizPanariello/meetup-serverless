@@ -9,6 +9,7 @@
   "author": "luizpanariello",
   "license": "ISC",
   "dependencies": {
+    "jenkins-api": "^0.2.8",
     "qs": "^6.2.1",
     "request": "^2.74.0",
     "request-promise": "^4.1.1"
