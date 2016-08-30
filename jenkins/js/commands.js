@@ -1,8 +1,36 @@
+'use strict';
+var jenkinsapi = require('jenkins-api');
+
 /**
  * Exporting commands
  */
-module.exports = {
-    "build" : () => {
-        
-    }
+module.exports = () => {
+    let jenkins = jenkinsapi.init("http://admin:admin@10.0.1.69:8080", {strictSSL: false});
+
+    return {
+        build : (job, callback) => {
+            jenkins.build(job, callback);
+        },
+        help : (ignore, callback) => {
+            let obj = {
+                "response_type": "in_channel",
+                "text": "I can help you with jenkins integration!",
+                "attachments": [
+                    {
+                        "text" : "I can't build yet but one day I swear that I will"
+                    }
+                ]
+            };
+
+            callback(null, obj);
+        },
+        error : (ignore, callback) => {
+            let obj = {
+                "response_type": "in_channel",
+                "text": "I can't find that command",
+            };
+
+            callback(null, obj);
+        }
+    };
 };

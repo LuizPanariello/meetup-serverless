@@ -1,1 +1,7 @@
-{}
+{
+    "method": "POST",
+    "payload": {
+        "token": "bWGQOyEY5gdc5Px97FjKCeWg",
+        "command": "/jenkins"
+    }
+}
