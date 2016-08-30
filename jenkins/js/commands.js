@@ -9,6 +9,7 @@ module.exports = () => {
 
     return {
         build : (job, callback) => {
+            console.log(job.text);
             jenkins.build(job, callback);
         },
         help : (ignore, callback) => {
@@ -16,9 +17,8 @@ module.exports = () => {
                 "response_type": "in_channel",
                 "text": "I can help you with jenkins integration!",
                 "attachments": [
-                    {
-                        "text" : "I can't build yet but one day I swear that I will"
-                    }
+                    { "text" : "I can't build yet but one day I swear that I will" },
+                    { "text" : "Try: /jenkins last-build" }
                 ]
             };
 
@@ -28,6 +28,14 @@ module.exports = () => {
             let obj = {
                 "response_type": "in_channel",
                 "text": "I can't find that command",
+            };
+
+            callback(null, obj);
+        },
+        "last-build": (ignore, callback) => {
+            let obj = {
+                "response_type": "in_channel",
+                "text": "Success on Teste",
             };
 
             callback(null, obj);

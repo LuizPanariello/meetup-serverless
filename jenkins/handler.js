@@ -16,14 +16,14 @@ module.exports.handler = (event, context, cb) => {
 
   if(event.method === "POST"){
     let data = prepareJsonFromString(event.payload);
-    console.log(data);
     
     if(data.token === process.env.TOKEN){
-      if(typeof commands[data.text] === "undefined") 
-        return cb();
+      if(typeof commands[data.text.split(" ")[0]] === "undefined"){
+        data.text = "error";
+      }
       
-      commands[data.text](data.text.split(" ")[1], function(err, data){
-        if (err){ return cb(err);  }
+      commands[data.text.split(" ")[0]](data.text.split(" ")[1], function(err, data){
+        if (err){ return cb(err); }
         return cb(null, data);
       });
 
