@@ -5,11 +5,10 @@ var jenkinsapi = require('jenkins-api');
  * Exporting commands
  */
 module.exports = () => {
-    let jenkins = jenkinsapi.init("http://admin:admin@10.0.1.69:8080", {strictSSL: false});
+    let jenkins = jenkinsapi.init("ENDEREÇO DO JENKINS", {strictSSL: false});
 
     return {
         build : (job, callback) => {
-            console.log(job.text);
             jenkins.build(job, callback);
         },
         help : (ignore, callback) => {
