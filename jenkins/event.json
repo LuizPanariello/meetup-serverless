@@ -1,7 +1,7 @@
 {
     "method": "POST",
     "payload": {
-        "token": "bWGQOyEY5gdc5Px97FjKCeWg",
+        "token": "SEU TOKEN",
         "command": "/jenkins",
         "text" : "build Teste"
     }
